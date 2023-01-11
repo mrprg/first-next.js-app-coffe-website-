@@ -16,7 +16,7 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <h1>Coffe website!</h1>
-        <Banner />
+        <Banner buttonText="View Stores nearby" />
       </main>
     </>
   )
