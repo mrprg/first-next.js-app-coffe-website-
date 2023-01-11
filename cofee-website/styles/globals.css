@@ -93,6 +93,12 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+    background: url('../public/static/background.png');
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #373b64;
+    height: 100%;
 }
 
 a {
