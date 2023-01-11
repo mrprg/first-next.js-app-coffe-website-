@@ -1,12 +1,13 @@
+import styles from '../styles/Banner.module.css';
 const Banner = () => {
   return (
-    <div>
-        <h1>
-            <span>Coffe</span>
-            <span>website</span>
+    <div className={styles.container}>
+        <h1 className={styles.title}>
+            <span className={styles.title1}>Coffe</span>
+            <span className={styles.title2}>website</span>
         </h1>
-        <p>Discover nearby Cofee Shops!</p>
-        <button>Search</button>
+        <p className={styles.subTitle}>Discover nearby Cofee Shops!</p>
+        <button className={styles.button}>Search</button>
     </div>
   )
 }
