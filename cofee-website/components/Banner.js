@@ -7,7 +7,9 @@ const Banner = (props) => {
             <span className={styles.title2}>website</span>
         </h1>
         <p className={styles.subTitle}>Discover nearby Cofee Shops!</p>
+        <div className={styles.buttonWrapper}>
         <button className={styles.button} onClick={props.handleOnClick}>{props.buttonText}</button>
+        </div>
     </div>
   )
 }
