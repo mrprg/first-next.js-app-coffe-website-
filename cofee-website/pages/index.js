@@ -4,6 +4,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Banner from '../components/Banner'
 // const inter = Inter({ subsets: ['latin'] })
+import heroimage from '../public/static/3.1 heroimage.png'
 
 export default function Home() {
   const handleOnBannerBtnClick = () => {
@@ -19,6 +20,7 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <Banner buttonText="View Stores nearby" handleOnClick={handleOnBannerBtnClick}/>
+        <Image width={700} height={400} src={heroimage}/>
       </main>
     </>
   )
