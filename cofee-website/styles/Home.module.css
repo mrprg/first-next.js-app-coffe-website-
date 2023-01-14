@@ -11,7 +11,13 @@
   margin-bottom: 14rem /* 224px */;
 }
 
-.title a {
+.heroImage { 
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
+
+
 /** Breakpoints:
   sm: min-width: 640px;
   md: min-width: 768px;
@@ -32,7 +38,6 @@
     padding-right: 1.5rem /* 24px */;
   }
 }
-}
 
 
   @media(min-width: 768px) {
@@ -44,10 +49,16 @@
   .main {
     margin-top: 4rem /* 64px */;
   }
+  .heroImage {
+    right: 20%;
+  }
 }
 
 @media (min-width: 1280px) {
   .main {
     margin-top: 7rem /* 112px */;
+  }
+  .heroImage {
+    right: 20%;
   }
 }
