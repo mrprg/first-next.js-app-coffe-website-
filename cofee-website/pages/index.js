@@ -5,6 +5,7 @@ import styles from '../styles/Home.module.css'
 import Banner from '../components/Banner'
 // const inter = Inter({ subsets: ['latin'] })
 import heroimage from '../public/static/3.1 heroimage.png'
+import Card from '../components/Card'
 
 export default function Home() {
   const handleOnBannerBtnClick = () => {
@@ -23,6 +24,7 @@ export default function Home() {
         <div className={styles.heroImage}>
             <Image width={700} height={400} src={heroimage}/>
         </div>
+        <Card />
       </main>
     </>
   )

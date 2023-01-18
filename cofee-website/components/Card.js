@@ -1,10 +1,10 @@
+import styles from "../styles/Card.module.css";
 const Card = () => {
   return (
-    <div>
-        this is card component!~
+    <div className={styles.container}>
+        this is card component
     </div>
-  )
-}
+  );
+};
 
-export default Card
-
+export default Card;
