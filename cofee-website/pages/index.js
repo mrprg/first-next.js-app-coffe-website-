@@ -39,7 +39,7 @@ export default function Home() {
             return (
               <Card
                 className={styles.card}
-                href={coffeeData.websiteUrl}
+                href={`./coffee-store/${coffeeData.id}`}
                 name={coffeeData.name}
                 imgUrl={coffeeData.imgUrl}
               />
