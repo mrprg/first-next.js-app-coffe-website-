@@ -23,31 +23,36 @@ export default function Home() {
           name="viewport"
           content="width=device-width, initial-scale=1"
         />
-        <link
-          rel="icon"
-          href="/favicon.ico"
-        />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
         <Banner
           buttonText="View Stores nearby"
-          handleOnClick={
-            handleOnBannerBtnClick
-          }
+          handleOnClick={handleOnBannerBtnClick}
         />
-        <div
-          className={styles.heroImage}>
-          <Image
-            width={700}
-            height={400}
-            src={heroimage}
+        <div className={styles.heroImage}>
+          <Image width={700} height={400} src={heroimage} />
+        </div>
+        <div className={styles.cardLayout}>
+          <Card
+            className={styles.card}
+            href="./coffee-store/DarkHorse Coffee"
+            name="DarkHorse Coffee"
+            imgUrl={heroimage}
+          />
+          <Card
+            className={styles.card}
+            href="./coffee-store/DarkHorse Coffee"
+            name="DarkHorse Coffee"
+            imgUrl={heroimage}
+          />
+          <Card
+            className={styles.card}
+            href="./coffee-store/DarkHorse Coffee"
+            name="DarkHorse Coffee"
+            imgUrl={heroimage}
           />
         </div>
-        <Card
-          href="./coffee-store/DarkHorse Coffee"
-          name="DarkHorse Coffee"
-          imgUrl={heroimage}
-        />
       </main>
     </>
   );
