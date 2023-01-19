@@ -6,6 +6,7 @@ import Banner from "../components/Banner";
 // const inter = Inter({ subsets: ['latin'] })
 import heroimage from "../public/static/3.1 heroimage.png";
 import Card from "../components/Card";
+import coffeeStores from "../data/5.1 coffee-stores.json";
 
 export default function Home() {
   const handleOnBannerBtnClick = () => {
@@ -34,24 +35,16 @@ export default function Home() {
           <Image width={700} height={400} src={heroimage} />
         </div>
         <div className={styles.cardLayout}>
-          <Card
-            className={styles.card}
-            href="./coffee-store/DarkHorse Coffee"
-            name="DarkHorse Coffee"
-            imgUrl={heroimage}
-          />
-          <Card
-            className={styles.card}
-            href="./coffee-store/DarkHorse Coffee"
-            name="DarkHorse Coffee"
-            imgUrl={heroimage}
-          />
-          <Card
-            className={styles.card}
-            href="./coffee-store/DarkHorse Coffee"
-            name="DarkHorse Coffee"
-            imgUrl={heroimage}
-          />
+          {coffeeStores.map((coffeeData) => {
+            return (
+              <Card
+                className={styles.card}
+                href={coffeeData.websiteUrl}
+                name={coffeeData.name}
+                imgUrl={coffeeData.imgUrl}
+              />
+            );
+          })}
         </div>
       </main>
     </>
