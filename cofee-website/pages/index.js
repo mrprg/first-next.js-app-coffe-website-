@@ -6,12 +6,12 @@ import Banner from "../components/Banner";
 // const inter = Inter({ subsets: ['latin'] })
 import heroimage from "../public/static/3.1 heroimage.png";
 import Card from "../components/Card";
-import coffeeStores from "../data/5.1 coffee-stores.json";
+import coffeeStoresData from "../data/5.1 coffee-stores.json";
 
 export async function getStaticProps(context) {
   return {
     props: {
-      coffeeStores,
+      coffeeStores: coffeeStoresData,
     },
   };
 }
@@ -43,13 +43,13 @@ export default function Home(props) {
         <div className={styles.heroImage}>
           <Image width={700} height={400} src={heroimage} />
         </div>
-        {coffeeStores.length > 0 && (
+        {props.coffeeStores.length > 0 && (
           <>
             <h2 className={styles.heading2}>
               Arak Coffee Shops
             </h2>
             <div className={styles.cardLayout}>
-              {coffeeStores.map((coffeeData) => {
+              {props.coffeeStores.map((coffeeData) => {
                 return (
                   <Card
                     className={styles.card}
