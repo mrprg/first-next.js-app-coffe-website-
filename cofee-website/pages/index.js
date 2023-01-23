@@ -8,7 +8,16 @@ import heroimage from "../public/static/3.1 heroimage.png";
 import Card from "../components/Card";
 import coffeeStores from "../data/5.1 coffee-stores.json";
 
-export default function Home() {
+export async function getStaticProps(context) {
+  return {
+    props: {
+      coffeeStores,
+    },
+  };
+}
+
+export default function Home(props) {
+  console.log(props);
   const handleOnBannerBtnClick = () => {
     console.log("hi banner button");
   };
