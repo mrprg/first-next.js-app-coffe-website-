@@ -43,18 +43,25 @@ export default function Home(props) {
         <div className={styles.heroImage}>
           <Image width={700} height={400} src={heroimage} />
         </div>
-        <div className={styles.cardLayout}>
-          {coffeeStores.map((coffeeData) => {
-            return (
-              <Card
-                className={styles.card}
-                href={`./coffee-store/${coffeeData.id}`}
-                name={coffeeData.name}
-                imgUrl={coffeeData.imgUrl}
-              />
-            );
-          })}
-        </div>
+        {coffeeStores.length > 0 && (
+          <>
+            <h2 className={styles.heading2}>
+              Arak Coffee Shops
+            </h2>
+            <div className={styles.cardLayout}>
+              {coffeeStores.map((coffeeData) => {
+                return (
+                  <Card
+                    className={styles.card}
+                    href={`./coffee-store/${coffeeData.id}`}
+                    name={coffeeData.name}
+                    imgUrl={coffeeData.imgUrl}
+                  />
+                );
+              })}
+            </div>
+          </>
+        )}
       </main>
     </>
   );
