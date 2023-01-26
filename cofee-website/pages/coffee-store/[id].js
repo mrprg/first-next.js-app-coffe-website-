@@ -1,12 +1,12 @@
 import { useRouter } from "next/router";
-import coffeeStoreData from "../../data/5.1 coffee-stores.json";
+import coffeeStoresData from "../../data/5.1 coffee-stores.json";
 
 export async function getStaticProps(staticProps) {
   const params = staticProps.params;
   return {
     props: {
       coffeeStore: coffeeStoresData.find((coffeeStore) => {
-        return coffeeStore.id === 0; //dynamic id
+        return coffeeStore.id.toString() === params.id; //dynamic id
       }),
     },
   };
@@ -18,13 +18,25 @@ export function getStaticPaths() {
       { params: { id: "0" } },
       { params: { id: "1" } },
     ],
+    fallback: true,
   };
 }
 
-const CoffeeStore = () => {
+
+const CoffeeStore = (props) => {
   const router = useRouter();
   console.log(router);
-  return <h1>Coffee Shop {router.query.id}</h1>;
+  if (router.isFallback) {
+    return (
+      <div>Loading...</div>
+    )
+  }
+  return (
+    <>
+      <h1>{props.coffeeStore.address}</h1>
+      <p>{props.coffeeStore.name}</p>
+    </>
+  );
 };
 
 export default CoffeeStore;
