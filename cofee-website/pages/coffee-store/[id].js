@@ -4,6 +4,10 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import coffeeStoresData from "../../data/5.1 coffee-stores.json";
 import styles from "../../styles/coffee-store.module.css";
+import cls from "classnames";
+import nearMe from '../../public/static/icons/nearMe.svg'
+import places from '../../public/static/icons/places.svg'
+import star from '../../public/static/icons/star.svg'
 export async function getStaticProps(staticProps) {
   const params = staticProps.params;
   return {
@@ -61,9 +65,23 @@ const CoffeeStore = (props) => {
           />
         </div>
 
-        <div className={styles.col2}>
-          <p>{address}</p>
-          <p>{neighbourhood}</p>
+        <div className={cls("glass", styles.col2)}>
+          <div className={styles.iconWrapper}>
+            <Image
+              src={nearMe}
+              width="24"
+              height="24"
+            />
+            <p className={styles.text}>{address}</p>
+          </div>
+          <div className={styles.iconWrapper}>
+            <Image src={places} width="24" height="24" />
+            <p className={styles.text}>{neighbourhood}</p>
+          </div>
+          <div className={styles.iconWrapper}>
+            <Image src={star} width="24" height="24" />
+            <p className={styles.text}>1</p>
+          </div>
         </div>
       </div>
     </>
