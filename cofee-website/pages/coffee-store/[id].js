@@ -41,7 +41,7 @@ const CoffeeStore = (props) => {
       <Head>
         <title>{name}</title>
       </Head>
-      <Link href="/">Back To Home</Link>
+      <Link href="/"><a>Back To Home</a></Link>
       <p>{address}</p>
       <p>{name}</p>
       <p>{neighbourhood}</p>
