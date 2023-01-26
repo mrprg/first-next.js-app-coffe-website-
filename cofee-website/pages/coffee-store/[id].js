@@ -5,9 +5,9 @@ import { useRouter } from "next/router";
 import coffeeStoresData from "../../data/5.1 coffee-stores.json";
 import styles from "../../styles/coffee-store.module.css";
 import cls from "classnames";
-import nearMe from '../../public/static/icons/nearMe.svg'
-import places from '../../public/static/icons/places.svg'
-import star from '../../public/static/icons/star.svg'
+import nearMe from "../../public/static/icons/nearMe.svg";
+import places from "../../public/static/icons/places.svg";
+import star from "../../public/static/icons/star.svg";
 export async function getStaticProps(staticProps) {
   const params = staticProps.params;
   return {
@@ -32,6 +32,10 @@ export function getStaticPaths() {
     paths,
     fallback: true,
   };
+}
+
+const upvoteButtonHandler = () => {
+  console.log("hello there!")
 }
 
 const CoffeeStore = (props) => {
@@ -67,11 +71,7 @@ const CoffeeStore = (props) => {
 
         <div className={cls("glass", styles.col2)}>
           <div className={styles.iconWrapper}>
-            <Image
-              src={nearMe}
-              width="24"
-              height="24"
-            />
+            <Image src={nearMe} width="24" height="24" />
             <p className={styles.text}>{address}</p>
           </div>
           <div className={styles.iconWrapper}>
@@ -82,6 +82,9 @@ const CoffeeStore = (props) => {
             <Image src={star} width="24" height="24" />
             <p className={styles.text}>1</p>
           </div>
+          <button className={styles.upvoteButton} onClick={upvoteButtonHandler}>
+            upVoteButton
+          </button>
         </div>
       </div>
     </>
