@@ -9,9 +9,15 @@ import Card from "../components/Card";
 import coffeeStoresData from "../data/5.1 coffee-stores.json";
 
 export async function getStaticProps(context) {
+  const response = await fetch(
+    "https://api.foursquare.com/v3/places/search?query=coffee&ll=43.653833032607096%2C-79.37896808855945&limit=6",
+     
+  );
+  const data = await response.json();
+  console.log(data.results);
   return {
     props: {
-      coffeeStores: coffeeStoresData,
+      coffeeStores: data.results,
     },
   };
 }
@@ -52,10 +58,14 @@ export default function Home(props) {
               {props.coffeeStores.map((coffeeData) => {
                 return (
                   <Card
+                    key={coffeeData.fsq_id}
                     className={styles.card}
-                    href={`./coffee-store/${coffeeData.id}`}
+                    href={`./coffee-store/${coffeeData.fsq_id}`}
                     name={coffeeData.name}
-                    imgUrl={coffeeData.imgUrl}
+                    imgUrl={
+                      coffeeData.imgUrl ||
+                      "https://images.unsplash.com/photo-1504753793650-d4a2b783c15e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80"
+                    }
                   />
                 );
               })}
