@@ -9,9 +9,17 @@ import Card from "../components/Card";
 import coffeeStoresData from "../data/5.1 coffee-stores.json";
 
 export async function getStaticProps(context) {
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization:
+        "fsq3dPbhjH6D8LdOoePlHsNVhtOHtJso9I+mnW4SXL0pbFU=",
+    },
+  };
   const response = await fetch(
     "https://api.foursquare.com/v3/places/search?query=coffee&ll=43.653833032607096%2C-79.37896808855945&limit=6",
-     
+    options
   );
   const data = await response.json();
   console.log(data.results);
