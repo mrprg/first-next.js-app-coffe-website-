@@ -8,26 +8,29 @@ import cls from "classnames";
 import nearMe from "../../public/static/icons/nearMe.svg";
 import places from "../../public/static/icons/places.svg";
 import star from "../../public/static/icons/star.svg";
+import { fetchCoffeeStores } from "../../lib/coffee-store";
+
 export async function getStaticProps(staticProps) {
+  const coffeeStores = await fetchCoffeeStores();
   const params = staticProps.params;
   return {
     props: {
-      coffeeStore: coffeeStoresData.find((coffeeStore) => {
-        return coffeeStore.id.toString() === params.id; //dynamic id
+      coffeeStore: coffeeStores.find((coffeeStore) => {
+        return coffeeStore.fsq_id.toString() === params.id; //dynamic id
       }),
     },
   };
 }
 
-const paths = coffeeStoresData.map((coffeeStore) => {
-  return {
-    params: {
-      id: coffeeStore.id.toString(),
-    },
-  };
-});
-
-export function getStaticPaths() {
+export async function getStaticPaths() {
+  const coffeeStores = await fetchCoffeeStores();
+  const paths = coffeeStores.map((coffeeStore) => {
+    return {
+      params: {
+        id: coffeeStore.fsq_id.toString(),
+      },
+    };
+  });
   return {
     paths,
     fallback: true,
@@ -35,8 +38,8 @@ export function getStaticPaths() {
 }
 
 const upvoteButtonHandler = () => {
-  console.log("hello there!")
-}
+  console.log("hello there!");
+};
 
 const CoffeeStore = (props) => {
   const router = useRouter();
@@ -61,7 +64,10 @@ const CoffeeStore = (props) => {
             <h1 className={styles.name}>{name}</h1>
           </div>
           <Image
-            src={imgUrl}
+            src={
+              imgUrl ||
+              "https://images.unsplash.com/photo-1504753793650-d4a2b783c15e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80"
+            }
             width={600}
             height={360}
             className={styles.storeImg}
@@ -82,7 +88,9 @@ const CoffeeStore = (props) => {
             <Image src={star} width="24" height="24" />
             <p className={styles.text}>1</p>
           </div>
-          <button className={styles.upvoteButton} onClick={upvoteButtonHandler}>
+          <button
+            className={styles.upvoteButton}
+            onClick={upvoteButtonHandler}>
             upVoteButton
           </button>
         </div>
