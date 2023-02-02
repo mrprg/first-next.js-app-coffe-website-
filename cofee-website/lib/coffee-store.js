@@ -1,6 +1,6 @@
 import { createApi } from "unsplash-js";
 const unsplash = createApi({
-  accessKey: "MY_ACCESS_KEY",
+  accessKey: process.env.UNSPLASH_ACCESS_KEY,
 });
 const fetchCoffeeStoresUrls = (latLong, query, limit) => {
   return `https://api.foursquare.com/v3/places/search?query=${query}&ll=${latLong}&limit=${limit}`;
