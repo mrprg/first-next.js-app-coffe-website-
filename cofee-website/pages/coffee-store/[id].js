@@ -46,9 +46,7 @@ const CoffeeStore = (props) => {
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
-  const { location, name, imgUrl } =
-    props.coffeeStore;
-    console.log(location)
+  const { name, address, country, imgUrl } = props.coffeeStore;
   return (
     <>
       <Head>
@@ -77,14 +75,14 @@ const CoffeeStore = (props) => {
         </div>
 
         <div className={cls("glass", styles.col2)}>
-          <div className={styles.iconWrapper}>
+          {address && <div className={styles.iconWrapper}>
             <Image src={nearMe} width="24" height="24" />
-            <p className={styles.text}>{location.address}</p>
-          </div>
-          <div className={styles.iconWrapper}>
+            <p className={styles.text}>{address}</p>
+          </div>}
+          {country &&<div className={styles.iconWrapper}>
             <Image src={places} width="24" height="24" />
-            <p className={styles.text}>{location.country}</p>
-          </div>
+            <p className={styles.text}>{country}</p>
+          </div>}
           <div className={styles.iconWrapper}>
             <Image src={star} width="24" height="24" />
             <p className={styles.text}>1</p>
